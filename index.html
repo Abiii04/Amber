@@ -275,6 +275,29 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
+    <audio id="background-music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    const music = document.getElementById('background-music');
+
+    function playMusic() {
+        music.play().catch(() => console.log("Autoplay blocked"));
+        window.removeEventListener('click', playMusic);
+        window.removeEventListener('touchstart', playMusic);
+    }
+
+    // Play on first interaction (required for mobile browsers)
+    window.addEventListener('click', playMusic);
+    window.addEventListener('touchstart', playMusic);
+
+});
+</script>
+
 </body>
 </html>
+
 
